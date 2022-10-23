@@ -1,0 +1,28 @@
+﻿<Window x:Class="WpfApp_Test.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp_Test"
+        mc:Ignorable="d"
+        Title="Окно авторизации" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="62*"></RowDefinition>
+            <RowDefinition Height="79*"></RowDefinition>
+            <RowDefinition Height="76*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Content="Логин" HorizontalAlignment="Left" Margin="185,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="72" FontSize="14"/>
+        <Label Content="Пароль" HorizontalAlignment="Left" Margin="185,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="72" FontSize="14"/>
+        <TextBox x:Name="tbLogin" Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" Height="29"/>
+        <TextBox x:Name="tbPassword" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Width="246" Height="28"/>
+        <Button x:Name="tbLogIn" Grid.Column="1" Content="Войти" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="246" Height="42" Click="tbLogIn_Click"/>
+        <Label Grid.Column="1" Content="Авторизация" HorizontalAlignment="Left" Margin="63,51,0,0" VerticalAlignment="Top" FontSize="18" Width="124"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,63 @@
+﻿<Window x:Class="WpfApp_Test.View.ProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp_Test.View"
+        mc:Ignorable="d"
+        Title="Склад" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label>Поиск по ареиклю</Label>
+                <TextBox x:Name="tbArticle" Margin="5" MinWidth="100"></TextBox>
+                <Button x:Name="btSearch" Click="btSearch_Click" Margin="5">Поиск</Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label>Имя</Label>
+                <TextBox Margin="5" Name="tbName" MinWidth="100"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label>Производитель</Label>
+                <TextBox Margin="5" Name="tbManufacture" MinWidth="100"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label>Описание</Label>
+                <TextBox x:Name="tbDescription" Margin="5" MinWidth="200"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label>Цена</Label>
+                <TextBox Margin="5" Name="tbCost" MinWidth="100"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label>Скидка</Label>
+                <TextBox Margin="5" Name="tbDiscount" MinWidth="100"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label>Категория</Label>
+                <TextBlock Margin="5" MinWidth="100" Name="tbCategory"></TextBlock>
+                <Label>Если хотите поменять выбирете категорию из списка</Label>
+                <ComboBox Name="cbCategory" Margin="5" MinWidth="100"></ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label>Картинка</Label>
+                <TextBlock Margin="5" MinWidth="100" Name="tbImage"></TextBlock>
+                <Label>Если хотите поменять выберите из списка</Label>
+                <ComboBox Margin="5" Name="cbImage" MinWidth="100"></ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label>На складе сейчас: </Label>
+                <TextBlock Margin="5" Name="tbCount" MinWidth="100"></TextBlock>
+                <Label>едениц тоавра</Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label>Новая поставка товара: </Label>
+                <Label>если хотите списать введите отрицательное значение</Label>
+                <TextBox Margin="5" Name="tbCountIn" MinWidth="100"></TextBox>
+                <Button Margin="5" Name="btSaveCount" Click="btSaveCount_Click">Сохранить</Button>
+            </StackPanel>
+            <Button Margin="5" Name="btSaveProduct" Click="btSaveProduct_Click">Сохранить изменения</Button>
+            <Button x:Name="brDeleteAll" Margin="5" Click="brDeleteAll_Click">Удалить товар</Button>
+        </StackPanel>
+    </Grid>
+</Window>
