@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.PerformanceData;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,13 +22,46 @@ namespace WpfApp_Test
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// путь для капчи
+        /// </summary>
+        private string directore = @"/Captcha/";
+        /// <summary>
+        /// массив с названиями картинок с капчами
+        /// </summary>
+        private string[] ImPath = new string[]
+        {
+            "cp1.png",
+            "cp2.png",
+            "cp3.png"
+        };
+        /// <summary>
+        /// Массив с правильными ответами на капчу
+        /// </summary>
+        private string[] Answers = new string[]
+        {
+            "A1B2C",
+            "Ab48Hji",
+            "b7aD9"
+        };
+        private int CountIn = 0;
+        public int RnNumber = 0;
+        
         public MainWindow()
         {
             InitializeComponent();
+            ImageContent.Source = GetSource();
         }
 
         private void tbLogIn_Click(object sender, RoutedEventArgs e)
         {
+            if(CountIn >= 2)
+            {
+                stCaptcha.Visibility = Visibility.Visible;
+                stImage.Visibility = Visibility.Visible;
+                MessageBox.Show("введите капчу");
+                return;
+            }
             DB.MyContext myContext = new DB.MyContext();
             try
             {
@@ -38,11 +73,13 @@ namespace WpfApp_Test
                         View.ProductWindow productWindow = new View.ProductWindow();
                         productWindow.Show();
                         Close();
+                        CountIn = 0;
 
                     }
                     else
                     {
                         MessageBox.Show("Неправильный пароль или логин");
+                        CountIn++;
                     }
                 }
                 else
@@ -56,6 +93,47 @@ namespace WpfApp_Test
 
                 MessageBox.Show(ex.Message);
             }
+
+        }
+        /// <summary>
+        /// Метод для загрузки картинки капчи
+        /// </summary>
+        /// <returns></returns>
+        private BitmapImage GetSource()
+        {
+            string path = directore + ImPath[RnNumber];
+            Uri uri = new Uri(path, UriKind.Relative);
+            BitmapImage image = new BitmapImage(uri);
+            return image;
+        }
+        /// <summary>
+        /// кнопка проверки капчи
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btCaptchaIn_Click(object sender, RoutedEventArgs e)
+        {
+            if(tbCaptchaIn.Text == Answers[RnNumber])
+            {
+                MessageBox.Show("Успешно");
+                CountIn = 0;
+                return;
+            }
+            MessageBox.Show("Неправильная капча вы заблокированы на 15 секунд");
+            Thread.Sleep(15000);
+            
+        }
+        /// <summary>
+        /// кнопка для обновления капчи
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btReloadeCaptcha_Click(object sender, RoutedEventArgs e)
+        {
+            Random random = new Random();
+            int RndNumber = random.Next(0, 3);
+            RnNumber = RndNumber;
+            ImageContent.Source = GetSource();
 
         }
     }

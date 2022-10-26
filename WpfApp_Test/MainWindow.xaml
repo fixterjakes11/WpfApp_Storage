@@ -23,6 +23,14 @@
         <TextBox x:Name="tbPassword" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Width="246" Height="28"/>
         <Button x:Name="tbLogIn" Grid.Column="1" Content="Войти" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="246" Height="42" Click="tbLogIn_Click"/>
         <Label Grid.Column="1" Content="Авторизация" HorizontalAlignment="Left" Margin="63,51,0,0" VerticalAlignment="Top" FontSize="18" Width="124"/>
+        <StackPanel x:Name="stImage" Grid.Column="2" Orientation="Horizontal" Visibility="Collapsed">
+            <Image Height="124" Name="ImageContent"></Image>
+        </StackPanel>
+        <StackPanel x:Name="stCaptcha" Grid.Column="2" Grid.Row="1" Visibility="Collapsed" >
+            <TextBox Margin="5" MinWidth="100" Name="tbCaptchaIn" Height="28"></TextBox>
+            <Button x:Name="btCaptchaIn" Click="btCaptchaIn_Click" Margin="5" Height="30">Проверить</Button>
+            <Button x:Name="btReloadeCaptcha" Click="btReloadeCaptcha_Click" Margin="5" Height="30">Обновить капчу</Button>
+        </StackPanel>
 
     </Grid>
 </Window>
