@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp_Test"
         mc:Ignorable="d"
+        FontFamily="Time new Roman"
+        MinWidth="450" MinHeight="600"
         Title="Окно авторизации" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -31,6 +33,7 @@
             <Button x:Name="btCaptchaIn" Click="btCaptchaIn_Click" Margin="5" Height="30">Проверить</Button>
             <Button x:Name="btReloadeCaptcha" Click="btReloadeCaptcha_Click" Margin="5" Height="30">Обновить капчу</Button>
         </StackPanel>
+        <Button x:Name="btGuestIn" Grid.Column="1" HorizontalAlignment="Center" Margin="0,73,0,0" Grid.Row="2" VerticalAlignment="Top" Height="42" Width="246" Click="btGuestIn_Click">Войти как гость</Button>
 
     </Grid>
 </Window>

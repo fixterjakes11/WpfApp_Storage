@@ -13,5 +13,6 @@ namespace WpfApp_Test
     /// </summary>
     public partial class App : Application
     {
+        public static DB.User UserSessions { get; set; }
     }
 }

@@ -11,6 +11,8 @@
     <None Remove="Captcha\cp1.png" />
     <None Remove="Captcha\cp2.png" />
     <None Remove="Captcha\cp3.png" />
+    <None Remove="image\Image1.png" />
+    <None Remove="image\Image2.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +32,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Captcha\cp3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\Image1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\Image2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

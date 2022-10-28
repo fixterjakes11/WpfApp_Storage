@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp_Test.DB;
 
 namespace WpfApp_Test
 {
@@ -69,12 +70,24 @@ namespace WpfApp_Test
                 {
                     if(myContext.users.Any(x=> x.Login == tbLogin.Text) && myContext.users.Any(x => x.Password == tbPassword.Text))
                     {
-                        MessageBox.Show("Вы Успешно вошли");
-                        View.ProductWindow productWindow = new View.ProductWindow();
-                        productWindow.Show();
-                        Close();
                         CountIn = 0;
+                        MessageBox.Show("Вы Успешно вошли");
+                        var user = myContext.users.Single(x=> x.Login == tbLogin.Text);
+                        App.UserSessions = user;
+                        switch (user.Status)
+                        {
+                            case "Admin":
+                                View.ProductWindow productWindow = new View.ProductWindow();
+                                productWindow.Show();
+                                Close();
+                                break;
+                            case "User":
+                                View.UserView userView = new View.UserView();
+                                userView.Show();
+                                Close();
+                                break;
 
+                        }
                     }
                     else
                     {
@@ -135,6 +148,13 @@ namespace WpfApp_Test
             RnNumber = RndNumber;
             ImageContent.Source = GetSource();
 
+        }
+
+        private void btGuestIn_Click(object sender, RoutedEventArgs e)
+        {
+            View.GuestView guestView = new View.GuestView();
+            guestView.Show();
+            Close();
         }
     }
 }
