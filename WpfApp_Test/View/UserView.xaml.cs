@@ -27,9 +27,12 @@ namespace WpfApp_Test.View
 
         private void UserView_Loaded(object sender, RoutedEventArgs e)
         {
+            DB.MyContext myContext = new DB.MyContext();
+            var product = myContext.product;
             ImageUser.Source = GetSource();
             tbName.Text = App.UserSessions.Name;
             tbStatus.Text = App.UserSessions.Status;
+            cbProductView.ItemsSource = product.Select(x => x.ProductName).Distinct().ToList();
 
         }
         private BitmapImage GetSource()
